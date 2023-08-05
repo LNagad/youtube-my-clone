@@ -10,7 +10,6 @@ const CardPreview = ({ video }: { video: VideoAPIResponse}) => {
    const router = useRouter()
 
    const handleVideoDetails = () => {
-      console.log('clicked')
       router.push(`/video/${video.videoId}`)
    }
 

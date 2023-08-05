@@ -1,4 +1,3 @@
-import { Channel } from ".";
 
 export interface TrendingApiResponse {
   data: Video[];
@@ -10,7 +9,7 @@ export interface Video {
   title: string;
   channelTitle: string;
   channelId: string;
-  channel: Channel;
+  channel: any;
   description: string;
   viewCount: string;
   publishedText: string;
