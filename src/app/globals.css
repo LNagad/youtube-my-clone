@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset de estilos */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Importación de Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Personalización de estilos */
 body {
-@apply bg-neutral-900
+  @apply bg-neutral-900;
 }

@@ -11,22 +11,16 @@ const fetchHomePage = async() => {
 
 const CardData = async() => {
    const { data } = await fetchHomePage()
-   
-   const dataWithChannel = await Promise.all( data.map(async (video) => {
-      video.channel = (await getChannelById(video.channelId)).meta;
-      return video;
-   }));
-   
-   // return (
-   //    <div className="p-12">
-   //       <CardPreview video={ dataWithChannel[0] } />
-   //    </div>
-   // )
+   //w-full md:px-12 md:justify-between py-4 flex flex-wrap gap-y-8 ring-1 ring-white 
+   //sm:px-4 sm:justify-evenly
    return (
-      <div className="px-12 py-4 flex flex-wrap justify-between gap-y-8">
-         { dataWithChannel.map(info => ( 
-            <CardPreview key={ info.videoId } video={ info } />
-         ))}
+      <div className="flex flex-col px-4 py-3 gap-y-8 sm:flex-row sm:flex-wrap sm:justify-evenly md:justify-between box-border">
+         { data.map(info => {
+            if ( info.type !== 'video') return;
+            return ( 
+               <CardPreview key={ info.videoId } video={ info } />
+            )
+         })}
       </div>
    )
 }
@@ -34,8 +28,9 @@ const CardData = async() => {
 export default async function Home() {
 
    return (
+      
       <main>
-         <div className="">
+         <div className="w-[calc(100vh - 1vh)]">
             {/* <CardData />
             <YoutubeHomeCards /> */}
         
