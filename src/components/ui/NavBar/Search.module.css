@@ -1,0 +1,5 @@
+
+
+.searchContainer {
+@apply flex items-center rounded-l-3xl py-2 px-4 gap-x-4 bg-[rgb(18,18,18)]
+}
