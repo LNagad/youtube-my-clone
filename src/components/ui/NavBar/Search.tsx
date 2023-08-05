@@ -5,8 +5,7 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import styles from './Search.module.css'
 
 const Search = () => {
-   const searchBarRef = useRef<HTMLDivElement>(null)
-   
+
    const [inputFocus, setInputFocus] = useState(false)
    const [isMounted, setIsMounted] = useState(true)
    
@@ -35,7 +34,7 @@ const Search = () => {
   
    if ( isMounted ) {
       return (
-         <div ref={ searchBarRef } className='flex rounded-3xl w-[38%]'>
+         <div className='flex rounded-3xl w-[38%]'>
             <div className={`${styles.searchContainer} ${focusInputStyle} w-full `}>
                { inputFocus && (
                   <div className='flex items-center rounded-l-3xl'>

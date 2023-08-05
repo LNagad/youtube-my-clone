@@ -40,8 +40,10 @@ export default async function Page({ params }: { params: { id: string } }) {
    return (
       <div>
    
-         <div className="flex px-10 -my-4">
-            <div className="w-11/12">
+         <div className="flex-col flex xl:flex-row px-3  lg:px-10 -my-4">
+           
+            <div className="w-[90%] xl:w-11/12">
+            
                <div className="w-full mt-6">
                   <Player videoId={ videoData.id } />
                </div>
