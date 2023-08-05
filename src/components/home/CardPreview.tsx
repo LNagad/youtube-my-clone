@@ -1,12 +1,23 @@
+"use client"
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { formatViews, truncateText } from '@/helper'
 import { VideoAPIResponse } from '@/models/TrendingAPIResponse'
-// second div w-[300px] h-[180px]
+import { useRouter } from 'next/navigation'
+ 
 const CardPreview = ({ video }: { video: VideoAPIResponse}) => {
+   const router = useRouter()
+
+   const handleVideoDetails = () => {
+      router.push(`/video/${video.videoId}`)
+   }
+
    return (
-      <article className='cursor-pointer md:w-[32%] lg:w-[24%]'>
-         {/* <Link href={`/video/${video.videoId}`}> */}
+      <article 
+         className='cursor-pointer md:w-[32%] lg:w-[24%]'
+         onClick={ handleVideoDetails }
+      >
          <div className='w-full rounded-2xl'>
             <Image 
                className='w-full h-full rounded-2xl '
@@ -46,8 +57,6 @@ const CardPreview = ({ video }: { video: VideoAPIResponse}) => {
                </p>
             </div>
          </div>
-         
-         {/* </Link> */}
       </article>
    )
 }
