@@ -1,8 +1,6 @@
-import { Suspense } from "react";
 import Image from "next/image";
 import { AiFillCheckCircle } from 'react-icons/ai'
-import { Player, YoutubeVideoDetails } from "@/components";
-import { formatViews, truncateText } from "@/helper";
+import { Player } from "@/components";
 import { fetchRelatedVideos, getChannel, getVideo } from "@/services"
 import RelatedVideoCard from "../components/RelatedVideoCard";
 
@@ -43,15 +41,11 @@ export default async function Page({ params }: { params: { id: string } }) {
          <div className="flex-col flex xl:flex-row px-3  lg:px-10 -my-4">
            
             <div className="w-[90%] xl:w-11/12">
-            
                <div className="w-full mt-6">
                   <Player videoId={ videoData.id } />
                </div>
-
                <div className="mt-4 flex flex-col gap-y-2">
-                  
                   <p className="text-white font-medium text-lg">{ videoData.title }</p>
-
                   <div className="flex gap-x-2 items-center">
                      <div className="w-10 h-10">
                         <Image 
@@ -64,12 +58,13 @@ export default async function Page({ params }: { params: { id: string } }) {
                         />
                      </div>
                      <div className="text-white">
-                        <p className="text-sm font-medium">{ videoData.channelTitle }</p>
+                        <p className="text-sm font-medium flex items-center gap-x-1">{ videoData.channelTitle }
+                           { videoData.channel.isVerified && ( <AiFillCheckCircle size={14}  color='rgb(163 163 163)' />) } 
+                        </p>
                         <span className="flex items-center">
                            <p className='text-[13px] font-normal text-neutral-400 me-1'>
                               { videoData.channel.subscriberCountText }
                            </p>
-                           { videoData.channel.isVerified && ( <AiFillCheckCircle size={14}  color='rgb(163 163 163)' />) } 
                         </span>
                      </div>
                   </div>
@@ -81,7 +76,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                </Suspense> */}
                
             </div>
-        
+
             <div className="grow py-6 px-4 flex flex-col ring-green-400">
                {
                   videoData.relatedVideos.map( video => (
@@ -89,11 +84,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                   ))
                }
              
-             
             </div>
-
          </div>
-
       </div>
    )
 }
