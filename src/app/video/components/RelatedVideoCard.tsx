@@ -25,12 +25,12 @@ const RelatedVideoCard = ({ video }: { video: RelatedVideo }) => {
          </div>
          <div className="text-white w-7/12">
             <p className="text-sm font-medium break-all">
-               { truncateText(video.title, 45) }
+               { truncateText(video.title, 38) }
             </p>
             <p className='inline-block text-[13px] font-normal text-neutral-400 hover:text-white cursor-pointer'>
                {video.channelTitle}
             </p>
-            <p className=' text-[13px] font-normal text-neutral-400'>
+            <p className='md:text-[13px] text-xs font-normal text-neutral-400'>
                { formatViews(video.viewCount)+' views' } | { video.publishedTimeText }</p>
          </div>
       </div>

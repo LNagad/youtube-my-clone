@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                
             </div>
 
-            <div className="grow py-6 px-4 flex flex-col ring-green-400">
+            <div className="grow py-6 md:px-4 flex flex-col md:gap-y-4">
                {
                   videoData.relatedVideos.map( video => (
                      <RelatedVideoCard key={ video.videoId } video={ video } />
