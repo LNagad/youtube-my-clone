@@ -1,7 +1,8 @@
+import { Suspense } from "react";
 import Image from "next/image";
 import { AiFillCheckCircle } from 'react-icons/ai'
-import { Player } from "@/components";
 import { fetchRelatedVideos, getChannel, getVideo } from "@/services"
+import { Player } from "@/components";
 import RelatedVideoCard from "../components/RelatedVideoCard";
 
 const fetchVideoDetails = async (id: string) => {
@@ -78,11 +79,13 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
 
             <div className="grow py-6 md:px-4 flex flex-col md:gap-y-4">
-               {
-                  videoData.relatedVideos.map( video => (
-                     <RelatedVideoCard key={ video.videoId } video={ video } />
-                  ))
-               }
+               <Suspense fallback={ <span>Loading...</span> }>
+                  {
+                     videoData.relatedVideos.map( video => (
+                        <RelatedVideoCard key={ video.videoId } video={ video } />
+                     ))
+                  }
+               </Suspense>
              
             </div>
          </div>

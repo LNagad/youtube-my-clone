@@ -14,7 +14,9 @@ const CardData = async() => {
          { data.map(info => {
             if ( info.type !== 'video') return;
             return ( 
+               
                <CardPreview key={ info.videoId } video={ info } />
+               
             )
          })}
       </div>
