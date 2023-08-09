@@ -54,7 +54,6 @@ export default async function Page({ params }: { params: { id: string } }) {
                            src={ videoData!.channelImg?.url || ''}
                            alt={ videoData.channelTitle }
                            width={500}
-                           priority
                            height={500}
                         />
                      </div>
@@ -79,7 +78,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
 
             <div className="grow py-6 md:px-4 flex flex-col md:gap-y-4">
-               <Suspense fallback={ <span>Loading...</span> }>
+               <Suspense fallback={ <span className="text-white">Loading...</span> }>
                   {
                      videoData.relatedVideos.map( video => (
                         <RelatedVideoCard key={ video.videoId } video={ video } />
